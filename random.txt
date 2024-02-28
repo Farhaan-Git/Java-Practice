@@ -101,3 +101,5 @@ if(list1==null&&list2==null){
             prev.next=temp;
         }
         return list1;
+
+change the code to <= and > because test case 4 is failing 
