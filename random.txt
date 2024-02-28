@@ -49,3 +49,55 @@ if(list1==null&&list2==null){
             }
         }
         return list1;
+
+
+
+
+
+
+
+//second attempt
+
+
+if(list1==null&&list2==null){
+            return null;
+        }
+        else if(list2==null){
+            return list2;
+        }
+       ListNode temp1=list1;
+        ListNode temp2=list2;
+        ListNode temp=null;
+        ListNode prev=null;
+
+        while(temp1!=null&&temp2!=null){
+            if(temp1.next==null){
+                prev=temp1;
+                System.out.println("inside first if "+temp1.val);
+                System.out.println("inside first if "+prev.val);
+            }
+            if(temp1.val==temp2.val){
+                temp=temp2.next;
+                temp2.next=temp1.next;
+                temp1.next=temp2;
+                temp1=temp1.next.next;
+                temp2=temp;
+            }
+            else if(temp1.val<temp2.val){
+                temp=temp1;
+                temp1=temp1.next;
+            }
+            else if(temp1.val>temp2.val){
+                System.out.println("inside second if");
+                temp.next=temp2;
+                temp=temp2.next;
+                temp2.next=temp1;
+                temp1=temp1.next;
+            }
+        }
+        if(temp2!=null){
+            System.out.println("inside third if 1 "+prev.val);
+            System.out.println("inside third if 2 "+temp.val);
+            prev.next=temp;
+        }
+        return list1;
