@@ -1,0 +1,51 @@
+if(list1==null&&list2==null){
+            return null;
+        }
+        else if(list2==null){
+            return list2;
+        }
+        ListNode temp=null;
+        ListNode temp1=list1;
+        ListNode temp2=list2;
+        while(temp1.next!=null&&temp2!=null){
+                if(temp1.val == temp2.val){
+                    // System.out.println("inside if");
+                    temp=temp2;
+                    temp2=temp2.next;
+                    temp.next=temp1.next;
+                    temp1.next=temp;
+                    temp1=temp1.next.next;
+                    // temp=null;
+                    // EzhilTemp.printList(list1);
+                }
+                else if(temp1.val<temp2.val){
+                    // System.out.println("inside else if(temp1.val < temp2.val)");
+                        temp=temp1;
+                        temp1=temp1.next;
+                    // EzhilTemp.printList(list1);
+                    
+                }
+                else if(temp1.val>temp2.val){
+            // Hashset<Integer> hs= new HashSet<Integer>();
+                
+                    // System.out.println("inside else if(temp1.val > temp2.val)");
+                    temp.next=temp2;
+                    temp=temp2;
+                    temp.next=temp1;
+                    // temp=null;
+                    temp1=temp1.next;
+                    temp2=temp2.next;
+                    // EzhilTemp.printList(list1);
+                }
+                temp=temp1;
+        }
+        if(temp2!=null){
+            temp1=temp;
+            while(temp2!=null){
+                temp=temp2;
+                temp2=temp2.next;
+                temp1.next=temp;
+                temp.next=null;
+            }
+        }
+        return list1;
