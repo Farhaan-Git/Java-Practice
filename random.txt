@@ -103,3 +103,63 @@ if(list1==null&&list2==null){
         return list1;
 
 change the code to <= and > because test case 4 is failing 
+
+
+2 .add two numbers
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int carry=0;
+        ListNode ans= new ListNode();
+        while(true){
+            if(l1==null){
+                break;
+            }
+            else if(l2==null){
+                break;
+            }
+            else{
+                // System.out.println(String.format("THis is carry: %d this is l1.val: %d this is l2.val: %d",carry,l1.val,l2.val));
+                if(carry+l1.val+l2.val>9){
+                    System.out.println("inside if");
+                    carry=(carry+(l1.val+l2.val))%10;
+                   Solution.insert(ans,new ListNode((carry+(l1.val+l2.val))/10));
+                System.out.println(String.format("THis is carry: %d this is l1.val: %d this is l2.val: %d",carry,l1.val,l2.val));
+
+                }
+                else{
+                    System.out.println("inside else");
+                    Solution.insert(ans,new ListNode((carry+(l1.val+l2.val))/10));
+                System.out.println(String.format("THis is carry: %d this is l1.val: %d this is l2.val: %d",carry,l1.val,l2.val));
+                }
+                l1=l1.next;
+                l2=l2.next;
+            }
+        }
+        return ans;
+                
+    }
+    public static void insert(ListNode head,ListNode newNode){
+        if(head==null){
+            head=newNode;
+            head.next=null;
+        }
+        else{
+            while(head.next!=null){
+                head=head.next;
+            }
+            head.next=newNode;
+            newNode.next=null;
+        }
+    }
+}
